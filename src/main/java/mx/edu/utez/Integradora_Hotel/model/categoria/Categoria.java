@@ -20,20 +20,20 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_categoria;
     @Column(length = 50, nullable = false)
-    private String nombre_categoria;
+    private String nombrecategoria;
 
         @JsonIgnore
         @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
         private List<Elemento> elemento;
 
-    public Categoria(Long id_categoria, String nombre_categoria) {
+    public Categoria(Long id_categoria, String nombrecategoria) {
         this.id_categoria = id_categoria;
-        this.nombre_categoria = nombre_categoria;
+        this.nombrecategoria = nombrecategoria;
     }
 
-    public Categoria(Long id_categoria, String nombre_categoria, List<Elemento> elemento) {
+    public Categoria(Long id_categoria, String nombrecategoria, List<Elemento> elemento) {
         this.id_categoria = id_categoria;
-        this.nombre_categoria = nombre_categoria;
+        this.nombrecategoria = nombrecategoria;
         this.elemento = elemento;
     }
 }

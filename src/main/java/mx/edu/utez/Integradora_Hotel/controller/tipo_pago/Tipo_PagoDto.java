@@ -16,11 +16,11 @@ import java.util.List;
 public class Tipo_PagoDto {
 
     private Long id_tipopago;
-    private String nombre_pago;
+    private String nombre;
     private List<Pago> pagos;
 
     public Tipo_Pago toEntity(){
-        return new Tipo_Pago(id_tipopago, nombre_pago, pagos);
+        return new Tipo_Pago(id_tipopago, nombre, pagos);
     }
 
 }

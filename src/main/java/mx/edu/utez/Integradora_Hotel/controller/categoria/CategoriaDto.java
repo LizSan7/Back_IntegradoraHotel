@@ -14,10 +14,10 @@ import java.util.List;
 
 public class CategoriaDto {
     private Long id_categoria;
-    private String nombre_categoria;
+    private String nombrecategoria;
     private List<Elemento> elemento;
 
    public Categoria toEntity(){
-       return new Categoria(id_categoria, nombre_categoria, elemento);
+       return new Categoria(id_categoria, nombrecategoria, elemento);
    }
 }

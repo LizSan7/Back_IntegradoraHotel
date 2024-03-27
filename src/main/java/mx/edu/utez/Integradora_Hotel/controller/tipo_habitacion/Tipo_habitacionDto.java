@@ -16,11 +16,11 @@ import java.util.List;
 public class Tipo_habitacionDto {
 
     private Long id_tipohab;
-    private String nombre_habitacion;
+    private String nombrehabitacion;
     private List<Habitacion> habitacions;
 
     public Tipo_habitacion toEntity(){
-        return new Tipo_habitacion(id_tipohab, nombre_habitacion, habitacions);
+        return new Tipo_habitacion(id_tipohab, nombrehabitacion, habitacions);
     }
 
 }

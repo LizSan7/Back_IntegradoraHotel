@@ -1,8 +1,14 @@
 package mx.edu.utez.Integradora_Hotel.config;
 
 import lombok.RequiredArgsConstructor;
+import mx.edu.utez.Integradora_Hotel.model.categoria.Categoria;
+import mx.edu.utez.Integradora_Hotel.model.categoria.CategoriaRepository;
 import mx.edu.utez.Integradora_Hotel.model.role.Role;
 import mx.edu.utez.Integradora_Hotel.model.role.RoleRepository;
+import mx.edu.utez.Integradora_Hotel.model.tipo_habitacion.Tipo_habitacion;
+import mx.edu.utez.Integradora_Hotel.model.tipo_habitacion.Tipo_habitacionRepository;
+import mx.edu.utez.Integradora_Hotel.model.tipo_pago.Tipo_Pago;
+import mx.edu.utez.Integradora_Hotel.model.tipo_pago.Tipo_PagoRepository;
 import mx.edu.utez.Integradora_Hotel.model.usuario.Usuario;
 import mx.edu.utez.Integradora_Hotel.model.usuario.UsuarioRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -21,6 +27,10 @@ public class InitialConfig implements CommandLineRunner {
     private final RoleRepository roleRepository;
     private final UsuarioRepository usuarioRepository;
     private final PasswordEncoder encoder;
+    private final Tipo_PagoRepository tipoPagoRepository;
+    private final Tipo_habitacionRepository tipoHabitacionRepository;
+    private final CategoriaRepository categoriaRepository;
+
 
     @Override
     @Transactional(rollbackFor = {SQLException.class})
@@ -29,10 +39,27 @@ public class InitialConfig implements CommandLineRunner {
         getOrSaveRole(new Role("RECEPCIONISTA_ROLE"));
         getOrSaveRole(new Role("CLIENTE_ROLE"));
 
+        // Creación de usuario
         Usuario user = getOrSaveUser(
                 new Usuario("Lizbeth", "Santibañez", "Cruz", "lizz@gmail.com", encoder.encode("Lizz"), true)
         );
+        // Asignarle Rol de Admin :O
         saveUserRoles(user.getId_usuario(), adminRole.getId_role());
+
+        // Creación de tipos de pago
+        createTipoPago("Efectivo");
+        createTipoPago("Tarjeta");
+
+        // Creación de tipo de habitación uwu
+        createTipoHabitacion("Sencilla");
+        createTipoHabitacion("Junior Suite");
+        createTipoHabitacion("Senior Suite");
+        createTipoHabitacion("Master Suite");
+
+        // Creación de las categorías :)
+        createCategoria("Spa");
+        createCategoria("Restaurante");
+        createCategoria("Miscelaneos");
     }
 
     @Transactional
@@ -68,4 +95,35 @@ public class InitialConfig implements CommandLineRunner {
             }
         }
     }
+
+    @Transactional
+    public void createTipoPago(String nombre) {
+        Optional<Tipo_Pago> foundTipoPago = tipoPagoRepository.findByNombre(nombre);
+        if (foundTipoPago.isEmpty()) {
+            Tipo_Pago tipoPago = new Tipo_Pago();
+            tipoPago.setNombre(nombre);
+            tipoPagoRepository.saveAndFlush(tipoPago);
+        }
+    }
+
+    @Transactional
+    public void createTipoHabitacion(String nombrehabitacion){
+        Optional<Tipo_habitacion> foundTipoHab = tipoHabitacionRepository.findByNombrehabitacion(nombrehabitacion);
+        if (foundTipoHab.isEmpty()){
+            Tipo_habitacion tipoHabitacion = new Tipo_habitacion();
+            tipoHabitacion.setNombrehabitacion(nombrehabitacion);
+            tipoHabitacionRepository.saveAndFlush(tipoHabitacion);
+        }
+    }
+
+    @Transactional
+    public void createCategoria(String nombrecategoria){
+        Optional<Categoria> foundCategoria = categoriaRepository.findByNombrecategoria(nombrecategoria);
+        if (foundCategoria.isEmpty()){
+            Categoria categoria = new Categoria();
+            categoria.setNombrecategoria(nombrecategoria);
+            categoriaRepository.saveAndFlush(categoria);
+        }
+    }
+
 }

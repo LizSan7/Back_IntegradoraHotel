@@ -20,15 +20,15 @@ public class Tipo_habitacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_tipohab;
     @Column(length = 50, nullable = false)
-    private String nombre_habitacion;
+    private String nombrehabitacion;
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "tipoHabitacion")
     private List<Habitacion> habitacions;
 
-    public Tipo_habitacion(Long id_tipohab, String nombre_habitacion, List<Habitacion> habitacions) {
+    public Tipo_habitacion(Long id_tipohab, String nombrehabitacion, List<Habitacion> habitacions) {
         this.id_tipohab = id_tipohab;
-        this.nombre_habitacion = nombre_habitacion;
+        this.nombrehabitacion = nombrehabitacion;
         this.habitacions = habitacions;
     }
 }

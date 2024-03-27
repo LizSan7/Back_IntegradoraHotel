@@ -21,15 +21,15 @@ public class Tipo_Pago {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_tipopago;
     @Column(length = 50, nullable = false)
-    private String nombre_pago;
+    private String nombre;
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "tipoPago")
     private List<Pago> pagos;
 
-    public Tipo_Pago(Long id_tipopago, String nombre_pago, List<Pago> pagos) {
+    public Tipo_Pago(Long id_tipopago, String nombre, List<Pago> pagos) {
         this.id_tipopago = id_tipopago;
-        this.nombre_pago = nombre_pago;
+        this.nombre  = nombre;
         this.pagos = pagos;
     }
 }

@@ -38,7 +38,7 @@ public class UsuarioController {
     public ResponseEntity<ApiResponse> deleteById(@PathVariable Long id){
         return usuarioService.delete(id);
     }
-
+//dsd
 
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse> update(@PathVariable Long id, @Valid @RequestBody UsuarioDto usuarioDto) {

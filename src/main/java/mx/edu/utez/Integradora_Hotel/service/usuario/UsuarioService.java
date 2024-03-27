@@ -18,12 +18,10 @@ import java.util.Optional;
 @Transactional
 public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
-    private final RoleRepository roleRepository;
 
 
-    public UsuarioService(UsuarioRepository usuarioRepository, RoleRepository roleRepository) {
+    public UsuarioService(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
-        this.roleRepository = roleRepository;
     }
 
     @Transactional(readOnly = true)
@@ -55,7 +53,7 @@ public class UsuarioService {
                 HttpStatus.OK
         ), HttpStatus.OK);
     }
-
+//sdd
     @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<ApiResponse> delete(@PathVariable Long id) {
         Optional<Usuario> findById = usuarioRepository.findById(id);

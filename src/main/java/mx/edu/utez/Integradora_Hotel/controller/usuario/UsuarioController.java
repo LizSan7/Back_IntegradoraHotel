@@ -2,6 +2,7 @@ package mx.edu.utez.Integradora_Hotel.controller.usuario;
 
 import jakarta.validation.Valid;
 import mx.edu.utez.Integradora_Hotel.config.ApiResponse;
+import mx.edu.utez.Integradora_Hotel.controller.paquete.PaqueteDto;
 import mx.edu.utez.Integradora_Hotel.service.usuario.UsuarioService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -38,4 +39,10 @@ public class UsuarioController {
         return usuarioService.delete(id);
     }
 
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ApiResponse> update(@PathVariable Long id, @Valid @RequestBody UsuarioDto usuarioDto) {
+        ResponseEntity<ApiResponse> updateResponse = usuarioService.update(id, usuarioDto.toEntity());
+        return updateResponse;
+    }
 }

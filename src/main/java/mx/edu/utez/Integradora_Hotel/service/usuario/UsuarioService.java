@@ -74,4 +74,21 @@ public class UsuarioService {
                     HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(new ApiResponse(usuarioRepository.findById(id), HttpStatus.OK), HttpStatus.OK);
     }
+
+    @Transactional(rollbackFor = {SQLException.class})
+
+    public ResponseEntity<ApiResponse> update(Long id, Usuario updateUsuario){
+        Optional<Usuario> optionalUsuario = usuarioRepository.findById(id);
+        if (optionalUsuario.isPresent()) {
+            Usuario usuario = optionalUsuario.get();
+            usuario.setNombre(updateUsuario.getNombre());
+            usuario.setApellidoM(updateUsuario.getApellidoM());
+            usuario.setApellidoM(updateUsuario.getApellidoP());
+            usuario.setCorreo(updateUsuario.getCorreo());
+            return new ResponseEntity<>(new ApiResponse(HttpStatus.OK, false, "Usuario actualizado"), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(new ApiResponse(HttpStatus.NOT_FOUND, true, "No se encontró el Id proporcionado"), HttpStatus.NOT_FOUND);
+        }
+    }
+
 }

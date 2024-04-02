@@ -26,7 +26,7 @@ public class ReservaController {
         return reservaService.getAll();
     }
 
-    @PostMapping("/")
+    @PostMapping("/crear/")
     public ResponseEntity<ApiResponse> save(@Valid @RequestBody ReservaDto reservaDto) {
         return reservaService.register(reservaDto.toEntity());
     }

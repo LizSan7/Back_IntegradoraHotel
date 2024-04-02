@@ -64,6 +64,7 @@ public class MainSecurity {
                 .authorizeHttpRequests(req ->
                         req.requestMatchers(WHITE_LIST).permitAll()
                                 .requestMatchers("/api/usuario/**").hasAnyAuthority("GERENTE_ROLE")
+                                .requestMatchers("/api/reserva/crear/**").hasAnyAuthority("CLIENTE_ROLE", "GERENTE_ROLE", "RECEPCIONISTA_ROLE")
                                 .anyRequest().authenticated()
                         )
                 .httpBasic(Customizer.withDefaults())

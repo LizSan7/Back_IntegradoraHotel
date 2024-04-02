@@ -40,7 +40,7 @@ public class InitialConfig implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Role adminRole = getOrSaveRole(new Role("GERENTE_ROLE"));
         getOrSaveRole(new Role("RECEPCIONISTA_ROLE"));
-        getOrSaveRole(new Role("CLIENTE_ROLE"));
+        Role clientRole = getOrSaveRole(new Role("CLIENTE_ROLE"));
 
         // Creación de usuario
         Usuario user = getOrSaveUser(
@@ -48,6 +48,12 @@ public class InitialConfig implements CommandLineRunner {
         );
         // Asignarle Rol de Admin :O
         saveUserRoles(user.getId_usuario(), adminRole.getId_role());
+
+        Usuario userClient = getOrSaveUser(
+                new Usuario("Noe", "Aldama", "Carrazco", "leo@gmail.com", encoder.encode("123"), true)
+        );
+        // Asignarle Rol de Admin :O
+        saveUserRoles(userClient.getId_usuario(), clientRole.getId_role());
 
         // Creación de tipos de pago
         createTipoPago("Efectivo");

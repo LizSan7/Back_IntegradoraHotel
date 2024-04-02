@@ -76,7 +76,7 @@ public class Usuario {
         this.role = role;
     }
 
-    public Usuario( String nombre, String apellidoP, String apellidoM, String correo, String contrasena,  Boolean status) {
+    public  Usuario( String nombre, String apellidoP, String apellidoM, String correo, String contrasena,  Boolean status) {
         this.nombre = nombre;
         this.apellidoP = apellidoP;
         this.apellidoM = apellidoM;

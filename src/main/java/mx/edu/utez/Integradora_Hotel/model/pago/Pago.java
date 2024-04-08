@@ -44,7 +44,7 @@ public class Pago {
 
     @JsonIgnoreProperties(value = {"reserva"})
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "reserva_id")
+    @JoinColumn(name = "reserva_id", nullable = true)
     private Reserva reserva;
 
 

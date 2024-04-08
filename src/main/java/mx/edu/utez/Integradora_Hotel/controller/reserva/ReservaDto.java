@@ -26,11 +26,12 @@ public class ReservaDto {
     private LocalDateTime fecha_salida;
     private Double total;
     private String estado_reserva;
-    private Usuario usuario;
-    private List<Pago> pago;
-    private Paquete paquete;
+    private Usuario usuarios;
+    private List<Habitacion> habitacions;
+    private List<Elemento> elementos;
+    private LocalDateTime fecha_compra;
 
     public Reserva toEntity(){
-        return new Reserva(id_reserva, fecha_entrada, fecha_salida, total, estado_reserva, usuario, paquete, pago);
+        return new Reserva(id_reserva, fecha_entrada, fecha_salida, total,fecha_compra, usuarios, elementos, habitacions);
     }
 }

@@ -55,11 +55,9 @@ public class ReservaService {
         Optional<Reserva> optionalReserva = reservaRepository.findById(id);
         if (optionalReserva.isPresent()) {
             Reserva reserva = optionalReserva.get();
-            reserva.setEstado_reserva(updateReserva.getEstado_reserva());
             reserva.setFecha_entrada(updateReserva.getFecha_entrada());
             reserva.setFecha_salida(updateReserva.getFecha_salida());
             reserva.setTotal(updateReserva.getTotal());
-            reserva.setEstado_reserva(updateReserva.getEstado_reserva());
             reserva.setElementos(updateReserva.getElementos());
 
             reservaRepository.save(reserva);

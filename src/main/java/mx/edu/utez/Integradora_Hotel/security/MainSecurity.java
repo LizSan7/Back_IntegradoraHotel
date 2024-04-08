@@ -27,7 +27,8 @@ public class MainSecurity {
 
     private final String[] WHITE_LIST ={
             "/api/auth/**",
-            "/api/usuario/registro/**"
+            "/api/usuario/registro/**",
+            "/api/reserva/**"
     };
 
     private final UserDetailsServiceImpl service;
@@ -65,6 +66,7 @@ public class MainSecurity {
                         req.requestMatchers(WHITE_LIST).permitAll()
                                 .requestMatchers("/api/usuario/**").hasAnyAuthority("GERENTE_ROLE")
                                 .requestMatchers("/api/reserva/crear/**").hasAnyAuthority("CLIENTE  _ROLE", "GERENTE_ROLE", "RECEPCIONISTA_ROLE")
+                                .requestMatchers("/api/pago/**").hasAnyAuthority("CLIENTE  _ROLE", "GERENTE_ROLE", "RECEPCIONISTA_ROLE")
                                 .anyRequest().authenticated()
                         )
                 .httpBasic(Customizer.withDefaults())

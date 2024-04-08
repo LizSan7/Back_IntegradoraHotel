@@ -31,6 +31,7 @@ public class Elemento {
     @Column(columnDefinition = "TEXT")
     private String imagen_elemento;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "elementos")
     private List<Reserva> reservas;
 

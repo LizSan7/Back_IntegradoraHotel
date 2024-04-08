@@ -24,11 +24,11 @@ public class PagoDto {
     private String titular;
     private String cvv;
     private Tipo_Pago tipoPago;
-    private Reserva reserva;
+
     private Usuario usuario;
 
     public Pago toEntity(){
-        return new Pago(id_pago, monto, fecha_pago, num_tarjeta, titular, cvv, tipoPago, reserva, usuario);
+        return new Pago(id_pago, monto, fecha_pago, num_tarjeta, titular, cvv, tipoPago,  usuario);
     }
 
 }

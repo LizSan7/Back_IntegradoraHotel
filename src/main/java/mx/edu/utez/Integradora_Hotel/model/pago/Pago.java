@@ -42,13 +42,8 @@ public class Pago {
     @JoinColumn(name = "usuariopago_id")
     private Usuario usuario;
 
-    @JsonIgnoreProperties(value = {"reserva"})
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "reserva_id", nullable = true)
-    private Reserva reserva;
 
-
-    public Pago(Long id_pago, Double monto, LocalDateTime fecha_pago, Integer num_tarjeta, String titular, String cvv, Tipo_Pago tipoPago, Reserva reserva, Usuario usuario) {
+    public Pago(Long id_pago, Double monto, LocalDateTime fecha_pago, Integer num_tarjeta, String titular, String cvv, Tipo_Pago tipoPago,  Usuario usuario) {
         this.id_pago = id_pago;
         this.monto = monto;
         this.fecha_pago = fecha_pago;
@@ -56,7 +51,7 @@ public class Pago {
         this.titular = titular;
         this.cvv = cvv;
         this.tipoPago = tipoPago;
-        this.reserva = reserva;
+
         this.usuario = usuario;
     }
 }

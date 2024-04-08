@@ -21,8 +21,9 @@ public class HabitacionDto {
     private String descripcion;
     private Tipo_habitacion tipoHabitacion;
     private String imagen_hab;
+    private Boolean estatus;
 
     public Habitacion toEntity(){
-        return new Habitacion(id_habitacion, num_habitacion, capacidad,cant_camas, precio, descripcion, tipoHabitacion, imagen_hab);
+        return new Habitacion(id_habitacion, num_habitacion, capacidad,cant_camas, precio, descripcion, tipoHabitacion, imagen_hab, estatus);
     }
 }

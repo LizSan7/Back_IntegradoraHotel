@@ -28,8 +28,9 @@ public class ReservaController {
 
     @PostMapping("/crear/")
     public ResponseEntity<ApiResponse> save(@Valid @RequestBody ReservaDto reservaDto) {
-        return reservaService.register(reservaDto.toEntity());
+        return reservaService.register(reservaDto);
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse> findById(@PathVariable Long id) {
@@ -41,9 +42,5 @@ public class ReservaController {
         return reservaService.delete(id);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ApiResponse> update(@PathVariable Long id, @Valid @RequestBody ReservaDto reservaDto) {
-        ResponseEntity<ApiResponse> updateResponse = reservaService.update(id, reservaDto.toEntity());
-        return updateResponse;
-    }
+
 }

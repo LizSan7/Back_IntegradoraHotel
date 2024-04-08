@@ -25,13 +25,21 @@ public class ReservaDto {
     private LocalDateTime fecha_entrada;
     private LocalDateTime fecha_salida;
     private Double total;
-    private String estado_reserva;
-    private Usuario usuarios;
-    private List<Habitacion> habitacions;
-    private List<Elemento> elementos;
     private LocalDateTime fecha_compra;
+    private Long usuarioId; // Cambiado para solo tener el ID
+    private List<Long> habitacionIds; // Cambiado para tener IDs de habitaciones
+    private List<Long> elementoIds; // Cambiado para tener IDs de elementos
 
-    public Reserva toEntity(){
-        return new Reserva(id_reserva, fecha_entrada, fecha_salida, total,fecha_compra, usuarios, elementos, habitacions);
+    public Reserva toEntity(Usuario usuario, List<Elemento> elementos, List<Habitacion> habitaciones) {
+        Reserva reserva = new Reserva();
+        reserva.setId_reserva(this.id_reserva);
+        reserva.setFecha_entrada(this.fecha_entrada);
+        reserva.setFecha_salida(this.fecha_salida);
+        reserva.setTotal(this.total);
+        reserva.setFecha_compra(this.fecha_compra);
+        reserva.setUsuarios(usuario);
+        reserva.setElementos(elementos);
+        reserva.setHabitaciones(habitaciones);
+        return reserva;
     }
 }

@@ -19,12 +19,12 @@ public class PaqueteDto {
     private String nombre_paquete;
     private Double precio;
     private String descripcion;
-    private List<Reserva> reservas;
+
     private Elemento elemento;
     private String imagen_paquete;
 
     public Paquete toEntity(){
-        return new Paquete(id_paquete, nombre_paquete, precio, descripcion, reservas, elemento, imagen_paquete);
+        return new Paquete(id_paquete, nombre_paquete, precio, descripcion, elemento, imagen_paquete);
     }
 
 }

@@ -28,7 +28,7 @@ public class Elemento {
     private Double precio;
     @Column(length = 150, nullable = true)
     private String descripcion;
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "LONGTEXT")
     private String imagen_elemento;
 
     @JsonIgnore

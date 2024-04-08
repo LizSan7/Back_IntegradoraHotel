@@ -29,8 +29,6 @@ public class Paquete {
     @Column(columnDefinition = "TEXT")
     private String imagen_paquete;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "paquete")
-    private List<Reserva> reservas;
 
     @JsonIgnoreProperties(value = {"paquetes"})
     @ManyToOne
@@ -44,12 +42,12 @@ public class Paquete {
         this.descripcion = descripcion;
     }
 
-    public Paquete(Long id_paquete, String nombre_paquete, Double precio, String descripcion,List<Reserva> reservas, Elemento elemento, String imagen_paquete) {
+    public Paquete(Long id_paquete, String nombre_paquete, Double precio, String descripcion, Elemento elemento, String imagen_paquete) {
         this.id_paquete = id_paquete;
         this.nombre_paquete = nombre_paquete;
         this.precio = precio;
         this.descripcion = descripcion;
-        this.reservas = reservas;
+
         this.elemento = elemento;
         this.imagen_paquete = imagen_paquete;
     }

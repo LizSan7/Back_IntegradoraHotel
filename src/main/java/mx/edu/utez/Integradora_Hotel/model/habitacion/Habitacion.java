@@ -30,8 +30,13 @@ public class Habitacion {
     private Double precio;
     @Column(length = 150, nullable = false)
     private String descripcion;
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "LONGTEXT")
     private String imagen_hab;
+    //Estatus booleano default true
+    @Column(columnDefinition = "boolean default true"  )
+    private Boolean estatus;
+
+
 
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -43,7 +48,7 @@ public class Habitacion {
     inverseJoinColumns = @JoinColumn(name = "reservas_id"))
     private List<Reserva> reservas;
 
-    public Habitacion(Long id_habitacion, Integer num_habitacion, String capacidad, String cant_camas, Double precio, String descripcion, Tipo_habitacion tipoHabitacion, String imagen_hab) {
+    public Habitacion(Long id_habitacion, Integer num_habitacion, String capacidad, String cant_camas, Double precio, String descripcion, Tipo_habitacion tipoHabitacion, String imagen_hab, Boolean estatus) {
         this.id_habitacion = id_habitacion;
         this.num_habitacion = num_habitacion;
         this.capacidad = capacidad;
@@ -52,5 +57,6 @@ public class Habitacion {
         this.descripcion = descripcion;
         this.tipoHabitacion = tipoHabitacion;
         this.imagen_hab = imagen_hab;
+        this.estatus = estatus;
     }
 }

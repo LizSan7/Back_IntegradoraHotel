@@ -45,7 +45,9 @@ public class Reserva {
             inverseJoinColumns = @JoinColumn(name = "elemento_id"))
     private List<Elemento> elementos;
 
-    @ManyToMany(mappedBy = "reservas")
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "reserva_habitacion", joinColumns = @JoinColumn(name = "reservas_id"),
+                inverseJoinColumns = @JoinColumn(name = "habitacion_id"))
     private List<Habitacion> habitaciones;
 
 

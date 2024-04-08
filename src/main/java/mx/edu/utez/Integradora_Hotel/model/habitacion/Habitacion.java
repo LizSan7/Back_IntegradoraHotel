@@ -1,5 +1,6 @@
 package mx.edu.utez.Integradora_Hotel.model.habitacion;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,9 +44,8 @@ public class Habitacion {
     @JoinColumn(name = "tipohab_id")
     private Tipo_habitacion tipoHabitacion;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "habitacion_reserva", joinColumns = @JoinColumn(name = "habitacion_id"),
-    inverseJoinColumns = @JoinColumn(name = "reservas_id"))
+    @JsonIgnore
+    @ManyToMany(mappedBy = "habitaciones")
     private List<Reserva> reservas;
 
     public Habitacion(Long id_habitacion, Integer num_habitacion, String capacidad, String cant_camas, Double precio, String descripcion, Tipo_habitacion tipoHabitacion, String imagen_hab, Boolean estatus) {

@@ -30,6 +30,9 @@ public class Reserva {
     private LocalDateTime fecha_salida;
     @Column(length = 50, nullable = false)
     private Double total;
+    //total de productos
+    @Column(length = 50, nullable = false)
+    private Integer total_productos;
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime fecha_compra;
     @ManyToOne
@@ -46,11 +49,12 @@ public class Reserva {
     private List<Habitacion> habitaciones;
 
 
-    public Reserva(Long id_reserva, LocalDateTime fecha_entrada, LocalDateTime fecha_salida, Double total, LocalDateTime fecha_compra, Usuario usuarios, List<Elemento> elementos, List<Habitacion> habitaciones) {
+    public Reserva(Long id_reserva, LocalDateTime fecha_entrada, LocalDateTime fecha_salida, Double total, Integer total_productos, LocalDateTime fecha_compra, Usuario usuarios, List<Elemento> elementos, List<Habitacion> habitaciones) {
         this.id_reserva = id_reserva;
         this.fecha_entrada = fecha_entrada;
         this.fecha_salida = fecha_salida;
         this.total = total;
+        this.total_productos = total_productos;
         this.fecha_compra = fecha_compra;
         this.usuarios = usuarios;
         this.elementos = elementos;

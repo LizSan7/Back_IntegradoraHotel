@@ -50,13 +50,13 @@ public class InitialConfig implements CommandLineRunner {
                 new Usuario("Lizbeth", "Santibañez", "Cruz", "lizz@gmail.com", encoder.encode("Lizz"), true)
         );
         // Asignarle Rol de Admin :O
-        saveUserRoles(user.getId_usuario(), adminRole.getId_role());
+        saveUserRoles(user.getId(), adminRole.getId_role());
 
         Usuario userClient = getOrSaveUser(
                 new Usuario("Noe", "Aldama", "Carrazco", "leo@gmail.com", encoder.encode("123"), true)
         );
         // Asignarle Rol de Admin :O
-        saveUserRoles(userClient.getId_usuario(), clientRole.getId_role());
+        saveUserRoles(userClient.getId(), clientRole.getId_role());
 
         // Creación de tipos de pago
         createTipoPago("Efectivo");

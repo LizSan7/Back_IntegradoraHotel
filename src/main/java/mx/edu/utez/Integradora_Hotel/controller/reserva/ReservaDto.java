@@ -25,6 +25,7 @@ public class ReservaDto {
     private LocalDateTime fecha_entrada;
     private LocalDateTime fecha_salida;
     private Double total;
+    private Integer total_productos;
     private LocalDateTime fecha_compra;
     private Long usuarioId; // Cambiado para solo tener el ID
     private List<Long> habitacionIds; // Cambiado para tener IDs de habitaciones
@@ -36,6 +37,7 @@ public class ReservaDto {
         reserva.setFecha_entrada(this.fecha_entrada);
         reserva.setFecha_salida(this.fecha_salida);
         reserva.setTotal(this.total);
+        reserva.setTotal_productos(this.total_productos);
         reserva.setFecha_compra(this.fecha_compra);
         reserva.setUsuarios(usuario);
         reserva.setElementos(elementos);

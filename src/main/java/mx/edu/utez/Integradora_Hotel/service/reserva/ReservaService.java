@@ -35,6 +35,19 @@ public class ReservaService {
         this.habitacionRepository = habitacionRepository;
     }
 
+
+    public ResponseEntity<ApiResponse> findAllByUsuarioId(Long usuarioId){
+        try {
+            List<Reserva> reservas = reservaRepository.findAllByUsuariosId(usuarioId);
+            if (reservas.isEmpty()) {
+                return new ResponseEntity<>(new ApiResponse(HttpStatus.NOT_FOUND, true, "No se encontraron reservas para el usuario con ID: " + usuarioId), HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<>(new ApiResponse(reservas, HttpStatus.OK), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ApiResponse(HttpStatus.INTERNAL_SERVER_ERROR, true, "Ocurrió un error al buscar las reservas"), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @Transactional(readOnly = true)
     public ResponseEntity<ApiResponse> getAll(){
         return new ResponseEntity<>(new ApiResponse(reservaRepository.findAll(), HttpStatus.OK), HttpStatus.OK);

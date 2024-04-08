@@ -20,7 +20,7 @@ import java.util.List;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_usuario;
+    private Long id;
     @Column(length = 50, nullable = false)
     private String nombre;
     @Column(length = 50, nullable = false)
@@ -49,8 +49,8 @@ public class Usuario {
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "usuarios")
     private List<Reserva> reserva;
 
-    public Usuario(Long id_usuario, String nombre, String apellidoP, String apellidoM, String correo, String contrasena, Boolean status) {
-        this.id_usuario = id_usuario;
+    public Usuario(Long id, String nombre, String apellidoP, String apellidoM, String correo, String contrasena, Boolean status) {
+        this.id = id;
         this.nombre = nombre;
         this.apellidoP = apellidoP;
         this.apellidoM = apellidoM;
@@ -59,8 +59,8 @@ public class Usuario {
         this.status = status;
     }
 
-    public Usuario(Long id_usuario, String nombre, String apellidoP, String apellidoM, String correo, String contrasena, Boolean status, Role role) {
-        this.id_usuario = id_usuario;
+    public Usuario(Long id, String nombre, String apellidoP, String apellidoM, String correo, String contrasena, Boolean status, Role role) {
+        this.id = id;
         this.nombre = nombre;
         this.apellidoP = apellidoP;
         this.apellidoM = apellidoM;

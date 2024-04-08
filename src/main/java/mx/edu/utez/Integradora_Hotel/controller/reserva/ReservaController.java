@@ -19,6 +19,12 @@ public class ReservaController {
     public ReservaController(ReservaService reservaService) {
         this.reservaService = reservaService;
     }
+// En ReservaController.java
+
+    @GetMapping("/usuario/{usuarioId}")
+    public ResponseEntity<ApiResponse> findAllByUsuarioId(@PathVariable Long usuarioId) {
+        return reservaService.findAllByUsuarioId(usuarioId);
+    }
 
 
     @GetMapping("/")
@@ -30,7 +36,6 @@ public class ReservaController {
     public ResponseEntity<ApiResponse> save(@Valid @RequestBody ReservaDto reservaDto) {
         return reservaService.register(reservaDto);
     }
-
 
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse> findById(@PathVariable Long id) {

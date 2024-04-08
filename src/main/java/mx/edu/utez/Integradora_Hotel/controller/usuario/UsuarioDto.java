@@ -12,7 +12,7 @@ import mx.edu.utez.Integradora_Hotel.model.usuario.Usuario;
 @Setter
 
 public class UsuarioDto {
-    private Long id_usuario;
+    private Long id;
     private String nombre;
     private String apellidoP;
     private String apellidoM;
@@ -23,7 +23,7 @@ public class UsuarioDto {
 
     public Usuario toEntity(){
         if (role == null)
-            return new Usuario(id_usuario, nombre, apellidoP, apellidoM, correo, contrasena, status);
-        return new Usuario(id_usuario, nombre, apellidoP, apellidoM, correo, contrasena, status, role);
+            return new Usuario(id, nombre, apellidoP, apellidoM, correo, contrasena, status);
+        return new Usuario(id, nombre, apellidoP, apellidoM, correo, contrasena, status, role);
     }
 }

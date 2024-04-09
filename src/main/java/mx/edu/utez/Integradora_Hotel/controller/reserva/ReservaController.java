@@ -19,7 +19,6 @@ public class ReservaController {
     public ReservaController(ReservaService reservaService) {
         this.reservaService = reservaService;
     }
-// En ReservaController.java
 
     @GetMapping("/usuario/{usuarioId}")
     public ResponseEntity<ApiResponse> findAllByUsuarioId(@PathVariable Long usuarioId) {

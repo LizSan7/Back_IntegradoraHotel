@@ -23,7 +23,7 @@ public class HabitacionController {
         return habitacionService.getAll();
     }
 
-    @PostMapping("/")
+    @PostMapping("/crear/")
     public ResponseEntity<ApiResponse> save(@Valid @RequestBody HabitacionDto habitacionDto){
         return  habitacionService.register(habitacionDto.toEntity());
     }

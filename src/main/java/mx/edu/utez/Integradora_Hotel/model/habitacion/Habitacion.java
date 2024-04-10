@@ -1,6 +1,6 @@
 package mx.edu.utez.Integradora_Hotel.model.habitacion;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -44,7 +44,7 @@ public class Habitacion {
     @JoinColumn(name = "tipohab_id")
     private Tipo_habitacion tipoHabitacion;
 
-    @JsonIgnore
+    @JsonIgnoreProperties({"habitaciones"})
     @ManyToMany(mappedBy = "habitaciones")
     private List<Reserva> reservas;
 

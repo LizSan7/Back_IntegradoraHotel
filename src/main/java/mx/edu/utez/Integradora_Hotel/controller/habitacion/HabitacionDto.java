@@ -24,6 +24,6 @@ public class HabitacionDto {
     private Boolean estatus;
 
     public Habitacion toEntity(){
-        return new Habitacion(id_habitacion, num_habitacion, capacidad,cant_camas, precio, descripcion, tipoHabitacion, imagen_hab, estatus);
+        return new Habitacion(id_habitacion, num_habitacion, capacidad, cant_camas, precio, descripcion, tipoHabitacion, imagen_hab, estatus);
     }
 }

@@ -52,6 +52,19 @@ public class HabitacionService {
             return new ResponseEntity<>(new ApiResponse(HttpStatus.BAD_REQUEST, true, "No se ecnontró el Id"), HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(new ApiResponse(habitacionRepository.findById(id),HttpStatus.OK), HttpStatus.OK);
     }
+    // En HabitacionService.java
+    @Transactional(rollbackFor = {SQLException.class})
+    public ResponseEntity<ApiResponse> changeRoomStatus(Long id, Boolean newStatus){
+        Optional<Habitacion> habitacionOptional = habitacionRepository.findById(id);
+        if (habitacionOptional.isPresent()){
+            Habitacion habitacion = habitacionOptional.get();
+            habitacion.setEstatus(newStatus);
+            habitacionRepository.save(habitacion);
+            return new ResponseEntity<>(new ApiResponse(HttpStatus.OK, false, "Estatus de la habitación actualizado correctamente"), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(new ApiResponse(HttpStatus.NOT_FOUND, true, "No se encontró la habitación"), HttpStatus.NOT_FOUND);
+        }
+    }
 
     @Transactional(rollbackFor = {SQLException.class})
     public  ResponseEntity<ApiResponse> update(Long id, Habitacion updateHabitacion){
@@ -67,4 +80,5 @@ public class HabitacionService {
             return new ResponseEntity<>(new ApiResponse(HttpStatus.NOT_FOUND, true, "No se encontró el Id"), HttpStatus.NOT_FOUND);
         }
     }
+
 }

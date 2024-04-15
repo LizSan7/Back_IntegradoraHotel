@@ -35,7 +35,7 @@ public class InitialConfig implements CommandLineRunner {
     private final Tipo_habitacionRepository tipoHabitacionRepository;
     private final CategoriaRepository categoriaRepository;
     private final HabitacionRepository habitacionRepository;
-    private final ElementoRepository elementoRepository;
+    private final ElementoRepository elementoRepository;    
 
 
     @Override

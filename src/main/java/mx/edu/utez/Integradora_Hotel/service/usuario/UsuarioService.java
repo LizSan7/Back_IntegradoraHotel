@@ -34,6 +34,23 @@ public class UsuarioService {
         return new ResponseEntity<>(new ApiResponse(usuarioRepository.findAll(), HttpStatus.OK), HttpStatus.OK);
     }
 
+    //
+    // En UsuarioService.java
+
+    @Transactional(rollbackFor = {SQLException.class})
+    public ResponseEntity<ApiResponse> changeStatus(Long id, Boolean newStatus){
+        Optional<Usuario> optionalUsuario = usuarioRepository.findById(id);
+        if (optionalUsuario.isPresent()) {
+            Usuario usuario = optionalUsuario.get();
+            usuario.setStatus(newStatus); // Cambiamos el estado
+            usuarioRepository.save(usuario); // Guardamos el cambio en la base de datos
+            return new ResponseEntity<>(new ApiResponse(HttpStatus.OK, false, "Estado del usuario actualizado correctamente"), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(new ApiResponse(HttpStatus.NOT_FOUND, true, "Usuario no encontrado"), HttpStatus.NOT_FOUND);
+        }
+    }
+
+
     @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<ApiResponse> register(Usuario usuario) {
         System.out.println(usuario.toString());
@@ -81,7 +98,7 @@ public class UsuarioService {
             Usuario usuario = optionalUsuario.get();
             usuario.setNombre(updateUsuario.getNombre());
             usuario.setApellidoM(updateUsuario.getApellidoM());
-            usuario.setApellidoM(updateUsuario.getApellidoP());
+            usuario.setApellidoP(updateUsuario.getApellidoP());
             usuario.setCorreo(updateUsuario.getCorreo());
             return new ResponseEntity<>(new ApiResponse(HttpStatus.OK, false, "Usuario actualizado"), HttpStatus.OK);
         }else{

@@ -21,13 +21,13 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = true)
     private String nombre;
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = true)
     private String apellidoP;
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = true)
     private String apellidoM;
-    @Column(length = 30, nullable = false)
+    @Column(length = 30, nullable = true)
     private String correo;
     @Column(length = 150, nullable = false)
     private String contrasena;

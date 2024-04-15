@@ -3,9 +3,12 @@ package mx.edu.utez.Integradora_Hotel.controller.habitacion;
 import jakarta.validation.Valid;
 import mx.edu.utez.Integradora_Hotel.config.ApiResponse;
 import mx.edu.utez.Integradora_Hotel.service.habitacion.HabitacionService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @Controller
 @CrossOrigin(origins = {"*"})
@@ -43,4 +46,14 @@ public class HabitacionController {
         ResponseEntity<ApiResponse> updateResponse = habitacionService.update(id, habitacionDto.toEntity());
         return updateResponse;
     }
+    // En HabitacionController.java
+    @PutMapping("/{id}/changestatus")
+    public ResponseEntity<ApiResponse> changeRoomStatus(@PathVariable Long id, @RequestBody Map<String, Boolean> status) {
+        if (status.containsKey("estatus")) {
+            return habitacionService.changeRoomStatus(id, status.get("estatus"));
+        } else {
+            return new ResponseEntity<>(new ApiResponse(HttpStatus.BAD_REQUEST, true, "Estatus no proporcionado"), HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }

@@ -39,6 +39,12 @@ public class UsuarioController {
         return usuarioService.delete(id);
     }
 //dsd
+// En UsuarioController.java
+
+    @PutMapping("/{id}/changeStatus")
+    public ResponseEntity<ApiResponse> changeUserStatus(@PathVariable Long id, @RequestParam Boolean status) {
+        return usuarioService.changeStatus(id, status);
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse> update(@PathVariable Long id, @Valid @RequestBody UsuarioDto usuarioDto) {

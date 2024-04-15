@@ -39,7 +39,7 @@ public class Habitacion {
 
 
 
-
+    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "tipohab_id")
     private Tipo_habitacion tipoHabitacion;
